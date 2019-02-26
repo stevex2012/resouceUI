@@ -1,0 +1,58 @@
+// hairline
+@mixin hairline($pos: bottom, $color: $border-color-base, $radius: $radius-md) {
+    @if $pos==top or $pos==right {
+        @include onepx-scale($color, $pos, after, 0);
+    } @else if $pos==bottom or $pos==left or $pos==vertical or $pos==all {
+        @include onepx-scale($color, $pos, before, 0);
+    } @else if $pos==radius {
+        @include onepx-scale($color, $pos, before, $radius);
+    }
+}
+@mixin hairlineWithRadius($radius: $radius-sm) {
+    border-radius: $radius;
+    /* stylelint-disable media-feature-name-no-vendor-prefix */
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        &::before {
+            border-radius: $radius * 2;
+        }
+    }
+}
+@mixin hairlineColor($color, $pos: bottom) {
+    border: 1px solid;
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        border: 0;
+        &::before {
+            display: block !important;
+            @if $pos==top or $pos==right or $pos==bottom or $pos==left or $pos==vertical {
+                background-color: $color;
+            } @else {
+                border-color: $color;
+            }
+        }
+    }
+}
+@mixin hairlineClean {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        &::before {
+            display: none;
+        }
+    }
+}
+// hairline-remove
+@mixin hairline-remove($pos: bottom) {
+    @if $pos==all or $pos==vertical {
+        border: 0;
+    } @else {
+        border-#{$pos}: 0;
+    }
+
+    @if $pos==top or $pos==right {
+        &::after {
+            display: none !important;
+        }
+    } @else if $pos==bottom or $pos==left or $pos==vertical or $pos==all or $pos==radius {
+        &::before {
+            display: none !important;
+        }
+    }
+}

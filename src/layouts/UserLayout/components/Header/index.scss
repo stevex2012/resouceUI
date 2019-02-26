@@ -1,0 +1,24 @@
+.nav-menu {
+    .arrow-up-icon,
+    .arrow-down-icon {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        z-index: 1;
+        transition: .3s ease;
+    }
+    .sub-navs,
+    .arrow-up-icon {
+        display: none;
+    }
+    &:hover {
+        background: #272b2f;
+        .sub-navs,
+        .arrow-up-icon {
+            display: block;
+        }
+        .arrow-down-icon {
+            display: none;
+        }
+    }
+}

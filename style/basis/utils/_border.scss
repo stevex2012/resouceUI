@@ -1,0 +1,167 @@
+@import '../variables';
+@import '../mixins';
+
+/* 1px hack */
+.border-radius {
+    @include border-radius-hairline();
+}
+
+.border-t,
+.border-r,
+.border-b,
+.border-l,
+.border {
+    position: relative;
+    //transform: translateZ(0);
+}
+
+.border-t::before,
+.border-b::after,
+.border-l::before,
+.border-r::after,
+.border::after {
+    z-index: 1;
+}
+
+/* 上，下边框 */
+.border-t::before,
+.border-b::after {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    background-color: $border-color;
+}
+
+.border-t::before {
+    top: 0;
+}
+
+.border-b::after {
+    bottom: 0;
+}
+
+/* 左，右边框 */
+.border-l::before,
+.border-r::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    content: '';
+    background-color: $border-color;
+}
+
+.border-l::before {
+    left: 0;
+}
+
+.border-r::after {
+    right: 0;
+}
+
+.border::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    pointer-events: none;
+    content: '';
+    border: 1px solid $border-color;
+}
+
+/* 最后两个是为了检测Mobile ie9, 是因为Mobile IE9检测出的dpi为96dpi，与实际不符合
+    (-ms-high-contrast: active), (-ms-high-contrast: none)
+ */
+@media (-webkit-min-device-pixel-ratio: 2) {
+    /* 上，下边框 */
+    .border-t::before,
+    .border-b::after {
+        transform: scaleY(.5);
+    }
+
+    /* 左，右边框 */
+    .border-l::before,
+    .border-r::after {
+        transform: scaleX(.5);
+    }
+
+    /* 四边边框 */
+    .border::after {
+        width: 200%;
+        height: 200%;
+        transform: scale(.5);
+    }
+
+    /* 上、左、四边边框 */
+    .border-t::before,
+    .border-l::before,
+    .border::after {
+        transform-origin: 0 0;
+    }
+
+    /* 下，右边框 */
+    .border-b::after,
+    .border-r::after {
+        transform-origin: 100% 100%;
+    }
+}
+
+/* 解决1.5屏幕下某些边框不显式问题，小数位多写几位 */
+@media (-webkit-device-pixel-ratio: 1.5) {
+    /* 上，下边框 */
+    .border-t::before,
+    .border-b::after {
+        transform: scaleY(.66666666);
+    }
+
+    /* 左，右边框 */
+    .border-l::before,
+    .border-r::after {
+        transform: scaleX(.66666666);
+    }
+
+    /* 四边框 */
+    .border::after {
+        width: 150%;
+        height: 150%;
+        transform: scale(.66666666);
+    }
+
+    /* 上，左边框, 四边边框 */
+    .border-t::before,
+    .border-l::before,
+    .border::after {
+        transform-origin: 0 0;
+    }
+
+    /* 下，右边框 */
+    .border-b::after,
+    .border-r::after {
+        transform-origin: 100% 100%;
+    }
+}
+
+@media (-webkit-device-pixel-ratio: 3) {
+    /* 上，下边框 */
+    .border-t::before,
+    .border-b::after {
+        transform: scaleY(.33333333);
+    }
+
+    /* 左，右边框 */
+    .border-l::before,
+    .border-r::after {
+        transform: scaleX(.33333333);
+    }
+
+    /* 四边框 */
+    .border::after {
+        width: 300%;
+        height: 300%;
+        transform: scale(.33333333);
+    }
+}

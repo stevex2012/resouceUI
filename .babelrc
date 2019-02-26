@@ -1,0 +1,39 @@
+{
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "lodash",
+                "libraryDirectory": "",
+                "camel2DashComponentName": false
+            },
+            "lodash"
+        ],
+        [
+            "import",
+            {
+                "libraryName": "@alifd/next",
+                "libraryDirectory": "es"
+            },
+            "@alifd"
+        ],
+        ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ],
+    "env": {
+        "development": {
+            "presets": ["react-app"]
+        },
+        "production": {
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "useBuiltIns": "usage"
+                    }
+                ],
+                "react-app"
+            ]
+        },
+        "test": {}
+    }
+}

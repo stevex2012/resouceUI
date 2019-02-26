@@ -1,0 +1,51 @@
+.box {
+    display: inline-block;
+    box-sizing: border-box;
+    .panel {
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 10px;
+        overflow: hidden;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 1px solid #dcdee3;
+        border-radius: 3px;
+    }
+    .operations {
+        display: inline-block;
+        box-sizing: border-box;
+        margin: 0 20px;
+        vertical-align: middle;
+    }
+    .wrap {
+        width: 191px;
+        height: 300px;
+        overflow: scroll;
+    }
+    .rightW {
+        box-sizing: border-box;
+        border-bottom: 23px solid transparent;
+    }
+    .transformBtn {
+        display: block;
+        margin: 10px 0;
+    }
+    .checkItem {
+        display: flex !important;
+        height: 16px;
+        span:nth-child(2) {
+            line-height: 16px;
+            white-space: nowrap;
+        }
+    }
+    .rightAllCheck {
+        position: absolute;
+        bottom: 0;
+        left: -10px;
+        width: 224px;
+        padding: 8px 20px;
+        background-color: #fff;
+        border-top: 1px solid #dcdee3;
+    }
+}

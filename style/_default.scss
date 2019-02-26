@@ -1,0 +1,9 @@
+// 全局样式
+@import './settings';
+// 项目变量
+@import '../src/settings';
+// 全局样式重置
+@import './basis/reset';
+// 动画
+@import './basis/animate';
+// 组件样式

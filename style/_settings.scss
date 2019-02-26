@@ -1,0 +1,6 @@
+// 引入theme-chm主题变量
+@import '~@theme/variables.scss';
+// 公共scss mixins
+@import './basis/mixins';
+// 工具类
+@import './basis/utils';

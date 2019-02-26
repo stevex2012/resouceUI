@@ -1,0 +1,11 @@
+.ani- {
+    &-circle {
+        animation: ani-circle 1s linear infinite;
+    }
+}
+
+@keyframes ani-circle {
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,141 @@
+//mixin定义
+//== 第三方mixins，需要先安装对应的npm包,常用库包括：
+//-- mixins-sass: https://github.com/inier/mixins
+//-- sassmagic: http://w3cplus.github.io/SassMagic/
+@import '@node_modules/@ozo/mixins-sass/src/mixins.scss';
+//== 自定义mixins
+@import './mixins/hairline';
+@import './mixins/icons-svg';
+@mixin breakpoint($point) {
+    @if $point==lg {
+        @include min-screen($breakpoint-lg) {
+            @content;
+        }
+    } @else if $point==md {
+        @include min-screen($breakpoint-md) {
+            @content;
+        }
+    } @else if $point==sm {
+        @include min-screen($breakpoint-sm) {
+            @content;
+        }
+    } @else if $point==xs {
+        @include min-screen($breakpoint-xs) {
+            @content;
+        }
+    }
+}
+
+// 行留白whiteSpace
+@mixin whiteSpace($pos: bottom, $tag: padding) {
+    @if $pos==top or $pos==bottom {
+        #{$tag}-#{$pos}: $h-spacing-lg;
+        @include min-screen($breakpoint-lg) {
+            #{$tag}-#{$pos}: $h-spacing-xl;
+        }
+        @include max-screen($breakpoint-xs) {
+            #{$tag}-#{$pos}: $h-spacing-md;
+        }
+    }
+}
+
+@mixin whiteSpaceMargin($pos: bottom) {
+    @if $pos==top or $pos==bottom {
+        @include whiteSpace($pos, margin);
+    }
+}
+
+// 两翼留白wingBlank
+@mixin wingBlank($tag: padding) {
+    @if ($tag==padding or $tag==margin) {
+        #{$tag}-right: $v-spacing-lg;
+        #{$tag}-left: $v-spacing-lg;
+        @include min-screen($breakpoint-lg) {
+            #{$tag}-right: $v-spacing-xl;
+            #{$tag}-left: $v-spacing-xl;
+        }
+        @include max-screen($breakpoint-xs) {
+            #{$tag}-right: $v-spacing-md;
+            #{$tag}-left: $v-spacing-md;
+        }
+    } @else {
+        @error 'mixin wingBlank：Invalid Params (padding, margin).';
+    }
+}
+
+@mixin wingBlankMargin {
+    @include wingBlank(margin);
+}
+
+//消除两翼留白
+@mixin antiWingBlank {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+@mixin antiWingBlankMargin($tag: margin) {
+    #{$tag}-left: -$v-spacing-lg !important;
+    #{$tag}-right: -$v-spacing-lg !important;
+    @include min-screen($breakpoint-lg) {
+        #{$tag}-left: -$v-spacing-xl !important;
+        #{$tag}-right: -$v-spacing-xl !important;
+    }
+    @include max-screen($breakpoint-xs) {
+        #{$tag}-left: -$v-spacing-md !important;
+        #{$tag}-right: -$v-spacing-md !important;
+    }
+}
+
+// 单侧留白
+@mixin singleBlank($pos: left, $tag: padding) {
+    @if ($pos==left or $pos==right) and ($tag==padding or $tag==margin) {
+        @include breakpoint(xs) {
+            #{$tag}-#{$pos}: $v-spacing-sm;
+        }
+        @include breakpoint(sm) {
+            #{$tag}-#{$pos}: $v-spacing-md;
+        }
+        @include breakpoint(md) {
+            #{$tag}-#{$pos}: $v-spacing-lg;
+        }
+        @include breakpoint(lg) {
+            #{$tag}-#{$pos}: $v-spacing-xl;
+        }
+    }
+}
+
+// Border-radius
+@mixin border-radius($radius: $breakpoint-md) {
+    @if ($radius !=0) {
+        overflow: hidden;
+        border-radius: $btn-border-radius-lg;
+
+        @include max-screen($breakpoint-lg) {
+            border-radius: $btn-border-radius-lg;
+        }
+        @include max-screen($breakpoint-md) {
+            border-radius: $btn-border-radius;
+        }
+        @include max-screen($breakpoint-sm) {
+            border-radius: $btn-border-radius-sm;
+        }
+        @include max-screen($breakpoint-xs) {
+            border-radius: $btn-border-radius-xs;
+        }
+    }
+}
+
+// inline-block
+@mixin inline-block {
+    display: inline-block;
+}
+
+// Transitions
+// --------------------------------------------------
+@mixin transition($transition...) {
+    @if $enable-transitions {
+        transition: $transition;
+    }
+}

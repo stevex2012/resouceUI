@@ -1,0 +1,19 @@
+.basic-layout-dark {
+    min-width: 1200px;
+    .ice-layout-section {
+        padding-top: 62px;
+    }
+    .ice-layout-main {
+        padding: 20px;
+        background: #f2f2f2;
+    }
+    .ice-layout-aside {
+        .collapse-btn {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-align: right;
+            cursor: pointer;
+        }
+    }
+}

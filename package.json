@@ -1,0 +1,198 @@
+{
+  "name": "@ozo/react-jazz",
+  "version": "1.0.0",
+  "author": {
+    "name": "jazz",
+    "email": "inier@qq.com"
+  },
+  "description": "脚手架基于CRA2, 通用、开箱即用。",
+  "dependencies": {
+    "@alifd/next": "^1.11.11",
+    "@alifd/theme-chm": "^0.1.2",
+    "@icedesign/container": "^1.x",
+    "@icedesign/data-binder": "^1.x",
+    "@icedesign/form-binder": "^1.x",
+    "@icedesign/foundation-symbol": "^1.x",
+    "@icedesign/img": "^1.x",
+    "@icedesign/label": "^1.x",
+    "@icedesign/layout": "^1.x",
+    "@icedesign/theme": "^0.1.2",
+    "@icedesign/title": "^1.0.0",
+    "@loadable/component": "^5.2.1",
+    "classnames": "^2.2.6",
+    "dynamic-polyfill": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-loadable": "^5.5.0",
+    "react-loader-spinner": "^2.2.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.1",
+    "react-spinners": "^0.4.7",
+    "react-transition-group": "^2.5.0",
+    "shortid": "^2.2.13"
+  },
+  "devDependencies": {
+    "@alifd/next-theme-loader": "^1.3.0",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
+    "@commitlint/cli": "^7.3.1",
+    "@commitlint/config-conventional": "^7.3.1",
+    "@craco/craco": "^3.2.3",
+    "@fpapado/docz-plugin-css": "^0.13.7",
+    "@ozo/mixins-sass": "^1.1.4",
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.2",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "babel-plugin-import": "^1.11.0",
+    "balloon-css": "^0.5.0",
+    "conventional-changelog": "^3.0.5",
+    "craco-babel-loader": "^0.1.2",
+    "craco-plugin-react-hot-reload": "^0.0.3",
+    "css-mqpacker": "^7.0.0",
+    "customize-cra": "^0.2.8",
+    "docz": "^0.13.7",
+    "docz-plugin-netlify": "^1.1.4",
+    "docz-theme-default": "^0.13.7",
+    "env-cmd": "^8.0.2",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-react-app": "^3.0.7",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "hash-sum": "^1.0.2",
+    "http-proxy-middleware": "^0.19.0",
+    "husky": "^1.3.1",
+    "ice-skin-loader": "^0.2.0",
+    "lint-staged": "^7.2.0",
+    "mobx": "~4.9.1",
+    "mobx-react": "^5.4.3",
+    "node-sass": "^4.9.4",
+    "onchange": "^5.0.2",
+    "p-min-delay": "^2.0.0",
+    "prettier": "^1.13.5",
+    "promise-timeout": "^1.3.0",
+    "rc-collapse": "^1.10.1",
+    "react-app-rewired": "^2.0.2",
+    "react-code-splitting": "^1.2.1",
+    "react-docgen": "^2.21.0",
+    "react-docgen-markdown-renderer": "^1.1.0",
+    "source-map-explorer": "^1.6.0",
+    "speed-measure-webpack-plugin": "^1.3.0",
+    "stylelint": "^9.9.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-primer": "^3.0.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^1.0.0",
+    "stylelint-scss": "^3.3.2",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "terser-webpack-plugin": "^1.2.2",
+    "typescript": "^3.1.6",
+    "webpack": "^4.29.5",
+    "webpack-build-notifier": "^0.1.30",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-plugin-import": "^0.2.3",
+    "webpack-simple-progress-plugin": "^0.0.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "scripts": {
+    "start": "env-cmd development react-app-rewired start",
+    "build": "env-cmd production react-app-rewired build && npm run build:auth",
+    "test": "env-cmd test react-app-rewired test",
+    "craco:start": "env-cmd development craco start",
+    "craco:build": "env-cmd production craco build",
+    "craco:test": "env-cmd test craco test",
+    "eject": "react-scripts eject",
+    "jslint": "eslint src/**/*.{js,jsx,ts,tsx} --format table",
+    "jslint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --fix",
+    "csslint": "stylelint **/*.{css,less,sass,scss} --cache",
+    "csslint:fix": "stylelint **/*.{css,less,sass,scss} --cache --fix",
+    "lint": "npm run jslint && npm run csslint",
+    "lint:fix": "npm run jslint:fix && npm run csslint:fix",
+    "prettier": "prettier --write **/*.{js,jsx,ts,tsx,css,sass,scss,less,json,md,mdx}",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "autoFormat": "onchange src/**/*.js src/**/*.jsx src/**/*.scss -- prettier --write {{changed}}",
+    "analyze": "react-app-rewired build && source-map-explorer build/static/js/main.*",
+    "build:auth": "webpack --config  src-auth/webpack.config.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'Pre-commit checks......' && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.{js,jsx}": [
+        "prettier --write",
+        "eslint --format table --fix",
+        "git add"
+      ],
+      "src/**/*.{ts,tsx}": [
+        "prettier --parser typescript --write",
+        "eslint --format table --fix",
+        "git add"
+      ],
+      "**/*.{css}": [
+        "prettier --write",
+        "stylelint --fix",
+        "git add"
+      ],
+      "*.{less}": [
+        "prettier --write",
+        "stylelint --syntax less --fix",
+        "git add"
+      ],
+      "*.{sass,scss}": [
+        "prettier --write",
+        "stylelint --syntax scss --fix",
+        "git add"
+      ],
+      "src/**/*.{json,md}": [
+        "prettier",
+        "stylelint --fix",
+        "git add"
+      ],
+      "yarn.lock": [
+        "git rm --cached"
+      ]
+    }
+  },
+  "buildConfig": {
+    "theme": {
+      "ice": "@icedesign/theme",
+      "alifd": "@alifd/theme-chm"
+    }
+  },
+  "keywords": [
+    "ice-scaffold"
+  ],
+  "license": "MIT",
+  "scaffoldConfig": {
+    "builder": "react-scripts",
+    "name": "react-admin-next-lite",
+    "title": "react-admin基础模板",
+    "categories": [
+      "基础模板"
+    ],
+    "screenshot": "https://unpkg.com/@ozo/react-jazz@latest/screenshot.png"
+  },
+  "title": "统一资源管理平台"
+}

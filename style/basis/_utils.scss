@@ -1,0 +1,14 @@
+// 背景
+@mixin background($start: #ffffff, $end: #000000) {
+    background: $end;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($start), to($end)); /* Saf4+, Chrome */
+    background-image: linear-gradient($start, $end);
+}
+
+// 文字截断
+@mixin ellipsis($rows: 1, $substract: 0) {
+    @include text-overflow($rows, $substract);
+    @if $rows != 1 {
+        word-break: break-all;
+    }
+}
